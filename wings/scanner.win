@@ -1,0 +1,31 @@
+(import analysis from "./analysis")
+
+(fun scanner [src]
+  (def chars (src.split ""))
+  (def tokens [])
+
+  (fun take-char []
+    (chars.shift))
+
+  (fun take-token []
+    (def next (first chars))
+
+    (case next
+      "," (take-char)
+      "(" (tokens.push { type = "open-paren", value = (take-char) })
+      ")" (tokens.push { type = "close-paren", value = (take-char) }))
+
+    (cond
+      (analysis.is-white-space next) (take-char)
+      (= next ",") (take-char)
+      (= next "(") (tokens.push { type = "open-paren", value = (take-char) })
+      (= next ")") (tokens.push { type = "close-paren", value = (take-char) })))
+
+  (fun scan []
+    (if (not-empty chars)
+      (do (take-token) (scan))
+      tokens))
+
+  (scan))
+
+(export scanner)

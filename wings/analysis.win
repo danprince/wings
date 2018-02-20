@@ -1,0 +1,19 @@
+(import * from "./core")
+
+(def whitespace-regex /\s/)
+(def number-regex /[0-9]/)
+(def valid-id-regex /[a-zA-Z*\/+=_$?\-.]/)
+
+(fun is-white-space [char]
+  (whitespace-regex.test char))
+
+(fun is-valid-identifier [char]
+  (valid-id-regex.test char))
+
+(fun is-number [char]
+  (number-regex.test char))
+
+(export
+  is-white-space
+  is-valid-identifier
+  is-number)

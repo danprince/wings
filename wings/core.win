@@ -1,0 +1,18 @@
+(fun empty? [coll]
+  (or
+    (= coll undefined)
+    (= coll null)
+    (= coll.length 0)))
+
+(fun not-empty? [coll]
+  (not (empty? coll)))
+
+(fun first [coll]
+  (coll [0]))
+
+(fun last [coll]
+  (coll [(- coll.length 1)]))
+
+(infix x + y)
+
+(export empty?)

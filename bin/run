@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+let fs = require("fs");
+let compiler = require("../lib/compiler");
+let path = process.argv[2];
+
+let src = fs.readFileSync(path, "utf8");
+let js = compiler(src);
+
+eval(js);

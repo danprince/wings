@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+let { compile } = require("../lib");
+let path = process.argv[2];
+let js = compile(path);
+
+console.log(js);
