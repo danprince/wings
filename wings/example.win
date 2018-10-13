@@ -1,0 +1,7 @@
+(fun double [x]
+  (def y (* x 2))
+  y)
+
+(console.log (double 10))
+
+(export double)
